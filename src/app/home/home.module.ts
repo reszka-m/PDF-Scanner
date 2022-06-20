@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   imports: [
@@ -13,7 +13,8 @@ import { HomePageRoutingModule } from './home-routing.module';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ImageCropperModule
   ],
   declarations: [HomePage]
 })

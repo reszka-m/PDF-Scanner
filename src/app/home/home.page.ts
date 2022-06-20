@@ -5,6 +5,7 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Filesystem, Directory, FilesystemDirectory } from '@capacitor/filesystem';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Platform } from '@ionic/angular';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -19,6 +20,7 @@ export class HomePage implements OnInit{
   pdfObj = null;
   photoPreview = null;
   logoData = null;
+  croppedImage = null;
 
   constructor(
     private fb: FormBuilder,
@@ -58,9 +60,13 @@ export class HomePage implements OnInit{
     this.photoPreview = `data:image/jpeg;base64,${image.base64String}`;
   }
 
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+  }
+
   createPdf() {
     const formValue = this.myForm.value;
-    const image = this.photoPreview ? {image: this.photoPreview, width: 300} : {};
+    const image = this.croppedImage ? {image: this.croppedImage, width: 300} : {};
 
     let logo = {};
     if (formValue.showLogo) {
