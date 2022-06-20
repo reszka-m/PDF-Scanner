@@ -29,7 +29,7 @@ export class HomePage implements OnInit{
   ocrResult = '';
   captureProgress = 0;
   photoForOCR = null;
-
+  
   constructor(
     private fb: FormBuilder,
     private plt: Platform,
