@@ -21,9 +21,14 @@
       <ion-input formControlName="to"></ion-input>
     </ion-item>
     <ion-item>
+      <ion-label position="stacked">File name</ion-label>
+      <ion-input formControlName="pdfFileName"></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-label position="stacked">Text</ion-label>
       <ion-textarea formControlName="text" rows="3"></ion-textarea>
     </ion-item>
+    <ion-button expand="full" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Save PDF</ion-button>
     <ion-button expand="full" type="submit">Create PDF</ion-button>
   </form>
 
@@ -39,5 +44,21 @@
   <img [src]="croppedImage" *ngIf="croppedImage">
 
   <ion-button expand="full" (click)="takePicture()">Add Picture</ion-button>
-  <ion-button expand="full" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Save PDF</ion-button>
+
+  <ion-button expand="full" (click)="takePictureForOCR()">Take picture for OCR</ion-button>
+
+  <ion-img [src]="photoForOCR" *ngIf="photoForOCR"></ion-img>
+
+  <ion-button expand="full" [disabled]="!workerReady || !photoForOCR" (click)="recognizeImage()">Text recognition</ion-button>
+
+  <ion-card *ngIf="workerReady && captureProgress > 0">
+    <ion-card-header>
+      <ion-card-title>
+        Capture progress: {{ captureProgress }}%
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ ocrResult }}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
