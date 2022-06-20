@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      PDF-Scanner Scan.Dal
+      <ion-icon name="scan-circle"></ion-icon> PDF-Scanner Scan.Dal 
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -28,8 +28,8 @@
       <ion-label position="stacked">Text</ion-label>
       <ion-textarea formControlName="text" rows="3"></ion-textarea>
     </ion-item>
-    <ion-button expand="block"color="secondary" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Save PDF<ion-icon slot="end" name="star"></ion-icon></ion-button>
-    <ion-button expand="block" color="secondary" type="submit">Create PDF<ion-icon slot="end" name="star"></ion-icon></ion-button>
+    <ion-button expand="block"color="secondary" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Save PDF<ion-icon slot="end" name="save"></ion-icon></ion-button>
+    <ion-button expand="block" color="secondary" type="submit">Create PDF<ion-icon slot="end" name="create"></ion-icon></ion-button>
   </form>
 
   <image-cropper 
@@ -43,13 +43,13 @@
 
   <img [src]="croppedImage" *ngIf="croppedImage">
 
-  <ion-button expand="block" color="secondary" (click)="takePicture()">Add Picture<ion-icon slot="end" name="star"></ion-icon></ion-button>
+  <ion-button expand="block" color="secondary" (click)="takePicture()">Take Picture<ion-icon slot="end" name="camera"></ion-icon></ion-button>
 
-  <ion-button expand="block" color="secondary" (click)="takePictureForOCR()">Take picture for OCR<ion-icon slot="end" name="star"></ion-icon></ion-button>
+  <ion-button expand="block" color="secondary" (click)="takePictureForOCR()">Take picture for OCR<ion-icon slot="end" name="camera"></ion-icon></ion-button>
 
   <ion-img [src]="photoForOCR" *ngIf="photoForOCR"></ion-img>
 
-  <ion-button expand="block" color="secondary" [disabled]="!workerReady || !photoForOCR" (click)="recognizeImage()">Text recognition<ion-icon slot="end" name="star"></ion-icon></ion-button>
+  <ion-button expand="block" color="secondary" [disabled]="!workerReady || !photoForOCR" (click)="recognizeImage()">Text recognition<ion-icon slot="end" name="text"></ion-icon></ion-button>
 
   <ion-card *ngIf="workerReady && captureProgress > 0">
     <ion-card-header>
