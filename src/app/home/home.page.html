@@ -40,9 +40,17 @@
   (imageCropped)="imageCropped($event)"
   outputType="base64" *ngIf="photoPreview">
   </image-cropper>
-
-  <img [src]="croppedImage" *ngIf="croppedImage">
-
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="ion-text-center">
+          <h3> photo preview: </h3>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <p style="text-align:center;"><img [src]="croppedImage" *ngIf="croppedImage" class="centre"></p>
+  
   <ion-button expand="block" color="secondary" (click)="takePicture()">Take Picture<ion-icon slot="end" name="camera"></ion-icon></ion-button>
 
   <ion-button expand="block" color="secondary" (click)="takePictureForOCR()">Take picture for OCR<ion-icon slot="end" name="camera"></ion-icon></ion-button>
