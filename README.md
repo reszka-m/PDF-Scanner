@@ -2,6 +2,8 @@
 ### To run this project
 
 **npm install** <br />
+**npm i jetifier** <br />
+**npx jetify** <br />
 
 _WEB_ <br />
 **ionic serve** <br />
