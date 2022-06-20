@@ -1,11 +1,12 @@
 # PDF-Scanner
 ### To run this project
 
-_WEB_
-**npm install**
-**ionic serve**
+**npm install** <br />
 
-_Android_
-**ionic cap copy**
-**ionic cap sync**
-**ionic cap open android**
+_WEB_ <br />
+**ionic serve** <br />
+
+_Android_ <br />
+**ionic cap copy** <br />
+**ionic cap sync** <br />
+**ionic cap open android** <br />
