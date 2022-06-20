@@ -28,8 +28,8 @@
       <ion-label position="stacked">Text</ion-label>
       <ion-textarea formControlName="text" rows="3"></ion-textarea>
     </ion-item>
-    <ion-button expand="block"color="secondary" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Save PDF</ion-button>
-    <ion-button expand="block" color="secondary" type="submit">Create PDF</ion-button>
+    <ion-button expand="block"color="secondary" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Save PDF<ion-icon slot="end" name="save"></ion-icon></ion-button>
+    <ion-button expand="block" color="secondary" type="submit">Create PDF<ion-icon slot="end" name="create"></ion-icon></ion-button>
   </form>
 
   <image-cropper 
@@ -43,13 +43,13 @@
 
   <img [src]="croppedImage" *ngIf="croppedImage">
 
-  <ion-button expand="block" color="secondary" (click)="takePicture()">Add Picture</ion-button>
+  <ion-button expand="block" color="secondary" (click)="takePicture()">Add Picture<ion-icon slot="end" name="image"></ion-icon></ion-button>
 
-  <ion-button expand="block" color="secondary" (click)="takePictureForOCR()">Take picture for OCR</ion-button>
+  <ion-button expand="block" color="secondary" (click)="takePictureForOCR()">Take picture for OCR<ion-icon slot="end" name="camera"></ion-icon></ion-button>
 
   <ion-img [src]="photoForOCR" *ngIf="photoForOCR"></ion-img>
 
-  <ion-button expand="block" color="secondary" [disabled]="!workerReady || !photoForOCR" (click)="recognizeImage()">Text recognition</ion-button>
+  <ion-button expand="block" color="secondary" [disabled]="!workerReady || !photoForOCR" (click)="recognizeImage()">Text recognition<ion-icon slot="end" name="<ion-icon name="create-outline"></ion-icon>"></ion-icon></ion-button>
 
   <ion-card *ngIf="workerReady && captureProgress > 0">
     <ion-card-header>
