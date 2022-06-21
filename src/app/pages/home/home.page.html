@@ -1,10 +1,4 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      <ion-icon name="scan-circle"></ion-icon> PDF-Scanner Scan.Dal 
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content class="ion-padding">
   <form (ngSubmit)="createPdf()" [formGroup]="myForm">
@@ -31,7 +25,7 @@
     <ion-button expand="block"color="secondary" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Save PDF<ion-icon slot="end" name="save"></ion-icon></ion-button>
     <ion-button expand="block" color="secondary" type="submit">Create PDF<ion-icon slot="end" name="create"></ion-icon></ion-button>
   </form>
-
+  
   <image-cropper 
   [imageBase64]="photoPreview"
   [maintainAspectRatio]="true"
@@ -40,8 +34,10 @@
   (imageCropped)="imageCropped($event)"
   outputType="base64" *ngIf="photoPreview">
   </image-cropper>
-
-  <img [src]="croppedImage" *ngIf="croppedImage">
+  <ion-card id = "cropped-card">
+    <img id = "cropped" [src]="croppedImage" *ngIf="croppedImage">
+  </ion-card>
+ 
 
   <ion-button expand="block" color="secondary" (click)="takePicture()">Take Picture<ion-icon slot="end" name="camera"></ion-icon></ion-button>
 

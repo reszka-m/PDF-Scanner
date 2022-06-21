@@ -1,0 +1,27 @@
+@media(min-width: 768px){
+    .mobile-header{
+        display: none;
+    }
+
+    .header{
+        display: flex;
+        
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+}
+
+@media(max-width: 768px){
+    .mobile-header{
+        display: block;
+    }
+
+    .header{
+        display: none;
+    }
+}
+
+.active-item{
+    border-bottom: 2px solid var(--ion-color-primary)
+}

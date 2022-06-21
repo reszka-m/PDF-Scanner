@@ -1,0 +1,18 @@
+
+
+<ion-content>
+  <image-cropper 
+  [imageBase64]="photoPreview"
+  [maintainAspectRatio]="true"
+  [aspectRatio]="4 / 3"
+  format="png"
+  (imageCropped)="imageCropped($event)"
+  outputType="base64" *ngIf="photoPreview">
+  </image-cropper>
+  <ion-card id = "cropped-card">
+    <img id = "cropped" [src]="croppedImage" *ngIf="croppedImage">
+  </ion-card>
+ 
+
+  <ion-button expand="block" color="secondary" (click)="takePicture()">Take Picture<ion-icon slot="end" name="camera"></ion-icon></ion-button>
+</ion-content>
