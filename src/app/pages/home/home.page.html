@@ -22,11 +22,45 @@
       <ion-label position="stacked">Text</ion-label>
       <ion-textarea formControlName="text" rows="3"></ion-textarea>
     </ion-item>
-    <ion-button expand="block"color="secondary" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Save PDF<ion-icon slot="end" name="save"></ion-icon></ion-button>
-    <ion-button expand="block" color="secondary" type="submit">Create PDF<ion-icon slot="end" name="create"></ion-icon></ion-button>
+    <ion-item>
+    <ion-button shape = "round" color="secondary" type="submit">Create PDF<ion-icon slot="end" name="create"></ion-icon></ion-button>
+  </ion-item>
+    
   </form>
   
-  <image-cropper 
+ 
+
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button shape = "round"  color="secondary" (click)="takePicture()">Take Picture<ion-icon slot="end" name="camera"></ion-icon></ion-button>
+
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button shape = "round" color="secondary" (click)="takePictureForOCR()">Take picture for OCR<ion-icon slot="end" name="camera"></ion-icon></ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button shape = "round" color="secondary" [disabled]="!workerReady || !photoForOCR" (click)="recognizeImage()">Text recognition<ion-icon slot="end" name="text"></ion-icon></ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button shape = "round" color="secondary" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Save PDF<ion-icon slot="end" name="save"></ion-icon></ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        
+        
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <image-cropper 
   [imageBase64]="photoPreview"
   [maintainAspectRatio]="true"
   [aspectRatio]="4 / 3"
@@ -34,18 +68,31 @@
   (imageCropped)="imageCropped($event)"
   outputType="base64" *ngIf="photoPreview">
   </image-cropper>
-  <ion-card id = "cropped-card">
-    <img id = "cropped" [src]="croppedImage" *ngIf="croppedImage">
-  </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <img id = "cropped" [src]="croppedImage" *ngIf="croppedImage">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
+
+  
+  
+    
+  
+
  
 
-  <ion-button expand="block" color="secondary" (click)="takePicture()">Take Picture<ion-icon slot="end" name="camera"></ion-icon></ion-button>
+  
 
-  <ion-button expand="block" color="secondary" (click)="takePictureForOCR()">Take picture for OCR<ion-icon slot="end" name="camera"></ion-icon></ion-button>
+ 
 
   <ion-img [src]="photoForOCR" *ngIf="photoForOCR"></ion-img>
 
-  <ion-button expand="block" color="secondary" [disabled]="!workerReady || !photoForOCR" (click)="recognizeImage()">Text recognition<ion-icon slot="end" name="text"></ion-icon></ion-button>
+  
 
   <ion-card *ngIf="workerReady && captureProgress > 0">
     <ion-card-header>

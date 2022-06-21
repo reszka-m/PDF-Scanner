@@ -12,4 +12,8 @@ export class AboutPage implements OnInit {
   ngOnInit() {
   }
 
+  logo = "assets/Logo.png";
+  mateusz = "assets/ja.jpg";
+  michal = "assets/michal.png";
+  wojtek = "assets/wojtek.jpg"
 }

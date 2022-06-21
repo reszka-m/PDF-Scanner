@@ -16,17 +16,17 @@ export class MenuPage implements OnInit {
     },
     {
       title: 'OCR',
-      icon: 'ocr',
+      icon: 'logo-codepen',
       path: '/ocr'
     },
     {
       title: 'PDF',
-      icon: 'PDF',
+      icon: 'document',
       path: '/pdf'
     },
     {
       title: 'About',
-      icon: 'about',
+      icon: 'information',
       path: '/about'
     }
   ];

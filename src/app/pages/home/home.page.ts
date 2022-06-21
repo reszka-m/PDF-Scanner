@@ -41,10 +41,10 @@ export class HomePage implements OnInit{
   ngOnInit() {
       this.myForm = this.fb.group({
         showLogo: true,
-        from: 'Michał',
-        to: 'Mateusz',
-        text: 'Add text...',
-        pdfFileName: 'Add file name...',
+        from: "",
+        to: "",
+        text: "",
+        pdfFileName: "",
       });
       this.loadLocalAssetToBase64();
   }
@@ -76,7 +76,7 @@ export class HomePage implements OnInit{
   }
 
   loadLocalAssetToBase64() {
-    this.http.get('./assets/testImage1.png', { responseType: 'blob' }).subscribe(res => {
+    this.http.get('./assets/Logo.png', { responseType: 'blob' }).subscribe(res => {
       const reader = new FileReader();
       reader.onloadend = () => {
         this.logoData = reader.result;
@@ -122,11 +122,11 @@ export class HomePage implements OnInit{
 
   createPdf() {
     const formValue = this.myForm.value;
-    const image = this.croppedImage ? {image: this.croppedImage, width: 300} : {};
+    const image = this.croppedImage ? { image: this.croppedImage, width:520,   } : {};
 
     let logo = {};
     if (formValue.showLogo) {
-      logo = { image: this.logoData, width: 50 };
+      logo = { image: this.logoData, width: 70 };
     }
 
     const docDefinition = {
@@ -141,47 +141,39 @@ export class HomePage implements OnInit{
             }
           ]
         },
-        { text: 'REMINDER', style: 'header' },
+        
         {
           columns: [
             {
               width: '50%',
-              text: 'From',
-              style: 'subheader'
+              text: 'From: ' +  formValue.from,
+              style: 'subheader',
+              alignment: 'left'
             },
             {
               width: '50%',
-              text: 'To',
-              style: 'subheader'
+              text: 'To: ' + formValue.to,
+              style: 'subheader',
+              alignment: 'right'
+             
             }
           ]
         },
-        {
-          columns: [
-            {
-              width: '50%',
-              text: formValue.from
-            },
-            {
-              width: '50%',
-              text: formValue.to
-            }
-          ]
-        },
+        
         image,
-        { text: formValue.text, margin: [0, 20, 0, 0] },
-        { text: this.ocrResult, margin: [0, 20, 0, 0] },
+        { text: formValue.text, margin: [20,20,20,20] },
+        { text: "Wyłapny text: \n \n" + this.ocrResult, margin: [20,20,20,20] },
       ],
       styles: {
         header: {
           fontSize: 18,
           bold: true,
-          margin: [0, 15, 0, 0]
+          margin: [20,20,20,20]
         },
         subheader: {
           fontSize: 14,
           bold: true,
-          margin: [0, 15, 0, 0]
+          margin: [20,20,20,20]
         }
       }
     }

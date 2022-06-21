@@ -12,4 +12,5 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {}
 
+  pdf = "assets/icon/pdf-scan.svg"
 }
